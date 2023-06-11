@@ -1,6 +1,6 @@
-package cn.monitor4all.miaoshaservice.service;
+package cn.monitor4all.miaoshaweb.service;
 
-import cn.monitor4all.miaoshadao.dao.Stock;
+import cn.monitor4all.miaoshaweb.dao.Stock;
 
 public interface StockService {
 

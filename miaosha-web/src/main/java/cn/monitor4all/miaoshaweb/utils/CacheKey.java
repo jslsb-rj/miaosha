@@ -1,4 +1,4 @@
-package cn.monitor4all.miaoshadao.utils;
+package cn.monitor4all.miaoshaweb.utils;
 
 public enum CacheKey {
 

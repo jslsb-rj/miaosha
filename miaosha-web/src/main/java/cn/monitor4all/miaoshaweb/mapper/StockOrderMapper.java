@@ -1,10 +1,7 @@
-package cn.monitor4all.miaoshadao.mapper;
+package cn.monitor4all.miaoshaweb.mapper;
 
-import java.util.List;
-
-import cn.monitor4all.miaoshadao.dao.StockOrder;
+import cn.monitor4all.miaoshaweb.dao.StockOrder;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface StockOrderMapper {

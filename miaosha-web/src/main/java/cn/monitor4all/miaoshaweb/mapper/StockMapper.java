@@ -1,6 +1,6 @@
-package cn.monitor4all.miaoshadao.mapper;
+package cn.monitor4all.miaoshaweb.mapper;
 
-import cn.monitor4all.miaoshadao.dao.Stock;
+import cn.monitor4all.miaoshaweb.dao.Stock;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

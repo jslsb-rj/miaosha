@@ -1,4 +1,4 @@
-package cn.monitor4all.miaoshaservice.service;
+package cn.monitor4all.miaoshaweb.service;
 
 public interface UserService {
 

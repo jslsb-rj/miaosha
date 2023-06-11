@@ -1,7 +1,9 @@
-package cn.monitor4all.miaoshadao.mapper;
+package cn.monitor4all.miaoshaweb.mapper;
 
-import cn.monitor4all.miaoshadao.dao.User;
+import cn.monitor4all.miaoshaweb.dao.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 

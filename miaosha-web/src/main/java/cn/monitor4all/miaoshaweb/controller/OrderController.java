@@ -1,8 +1,8 @@
 package cn.monitor4all.miaoshaweb.controller;
 
-import cn.monitor4all.miaoshaservice.service.OrderService;
-import cn.monitor4all.miaoshaservice.service.StockService;
-import cn.monitor4all.miaoshaservice.service.UserService;
+import cn.monitor4all.miaoshaweb.service.OrderService;
+import cn.monitor4all.miaoshaweb.service.StockService;
+import cn.monitor4all.miaoshaweb.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.util.concurrent.RateLimiter;
 import org.slf4j.Logger;
@@ -19,20 +19,24 @@ public class OrderController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
-    @Autowired
     private OrderService orderService;
 
-    @Autowired
     private UserService userService;
 
-    @Autowired
     private StockService stockService;
 
-    @Autowired
+
     private AmqpTemplate rabbitTemplate;
+    @Autowired
+    OrderController(OrderService orderService,UserService userService,StockService stockService, AmqpTemplate rabbitTemplate){
+        this.orderService =orderService;
+        this.rabbitTemplate=rabbitTemplate;
+        this.stockService =stockService;
+        this.userService = userService;
+    }
 
     // Guava令牌桶：每秒放行10个请求
-    RateLimiter rateLimiter = RateLimiter.create(10);
+    RateLimiter rateLimiter = RateLimiter.create(50);
 
     // 延时时间：预估读数据库数据业务逻辑的耗时，用来做缓存再删除
     private static final int DELAY_MILLSECONDS = 1000;

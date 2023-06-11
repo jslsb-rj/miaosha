@@ -1,6 +1,6 @@
 package cn.monitor4all.miaoshaweb.controller;
 
-import cn.monitor4all.miaoshaservice.service.StockService;
+import cn.monitor4all.miaoshaweb.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,12 @@ public class StockController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
-    @Autowired
     private StockService stockService;
+
+    @Autowired
+    StockController(StockService stockService){
+        this.stockService = stockService;
+    }
 
     /**
      * 查询库存：通过数据库查询库存

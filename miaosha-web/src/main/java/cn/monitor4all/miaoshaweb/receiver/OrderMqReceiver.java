@@ -1,7 +1,7 @@
 package cn.monitor4all.miaoshaweb.receiver;
 
-import cn.monitor4all.miaoshaservice.service.OrderService;
-import cn.monitor4all.miaoshaservice.service.StockService;
+import cn.monitor4all.miaoshaweb.service.OrderService;
+import cn.monitor4all.miaoshaweb.service.StockService;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +15,15 @@ public class OrderMqReceiver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderMqReceiver.class);
 
-    @Autowired
     private StockService stockService;
 
-    @Autowired
     private OrderService orderService;
+
+    @Autowired
+    OrderMqReceiver(OrderService orderService,StockService stockService){
+        this.orderService = orderService;
+        this.stockService = stockService;
+    }
 
     @RabbitHandler
     public void process(String message) {

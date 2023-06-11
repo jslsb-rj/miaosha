@@ -1,4 +1,4 @@
-package job;
+package cn.monitor4all.miaoshaweb.job;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
@@ -127,6 +127,7 @@ public class CanalClient {
 
     /**
      * 每个row上面的每一个column 的更改情况
+     *
      * @param columns
      */
     public static void printColumn(List<Column> columns) {

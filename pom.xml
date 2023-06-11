@@ -16,9 +16,7 @@
     <name>miaosha</name>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>miaosha-dao</module>
-        <module>miaosha-service</module>
+    <modules> 
         <module>miaosha-web</module>
     </modules>
 

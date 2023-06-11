@@ -1,4 +1,4 @@
-package cn.monitor4all.miaoshadao.dao;
+package cn.monitor4all.miaoshaweb.dao;
 
 import java.util.Date;
 

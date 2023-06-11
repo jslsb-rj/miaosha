@@ -1,8 +1,7 @@
-package cn.monitor4all.miaoshaservice.service;
-
-import cn.monitor4all.miaoshadao.dao.Stock;
-import cn.monitor4all.miaoshadao.mapper.StockMapper;
-import cn.monitor4all.miaoshadao.utils.CacheKey;
+package cn.monitor4all.miaoshaweb.service;
+import cn.monitor4all.miaoshaweb.dao.Stock;
+import cn.monitor4all.miaoshaweb.mapper.StockMapper;
+import cn.monitor4all.miaoshaweb.utils.CacheKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,14 @@ public class StockServiceImpl implements StockService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StockServiceImpl.class);
 
-    @Autowired
     private StockMapper stockMapper;
 
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
-
+    @Autowired
+    StockServiceImpl(StringRedisTemplate stringRedisTemplate,StockMapper stockMapper){
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.stockMapper = stockMapper;
+    }
     @Override
     public Integer getStockCount(int sid) {
         Integer stockLeft;

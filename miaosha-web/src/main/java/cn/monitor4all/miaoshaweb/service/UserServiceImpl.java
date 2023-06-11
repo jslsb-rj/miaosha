@@ -1,9 +1,9 @@
-package cn.monitor4all.miaoshaservice.service;
+package cn.monitor4all.miaoshaweb.service;
 
-import cn.monitor4all.miaoshadao.dao.Stock;
-import cn.monitor4all.miaoshadao.dao.User;
-import cn.monitor4all.miaoshadao.mapper.UserMapper;
-import cn.monitor4all.miaoshadao.utils.CacheKey;
+import cn.monitor4all.miaoshaweb.dao.Stock;
+import cn.monitor4all.miaoshaweb.dao.User;
+import cn.monitor4all.miaoshaweb.mapper.UserMapper;
+import cn.monitor4all.miaoshaweb.utils.CacheKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,17 @@ public class UserServiceImpl implements UserService {
     private static final String SALT = "randomString";
     private static final int ALLOW_COUNT = 10;
 
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
     private UserMapper userMapper;
 
-    @Autowired
     private StockService stockService;
+    @Autowired
+    UserServiceImpl(StringRedisTemplate stringRedisTemplate,UserMapper userMapper,StockService stockService){
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.userMapper = userMapper;
+        this.stockService = stockService;
+    }
 
     @Override
     public String getVerifyHash(Integer sid, Integer userId) throws Exception {

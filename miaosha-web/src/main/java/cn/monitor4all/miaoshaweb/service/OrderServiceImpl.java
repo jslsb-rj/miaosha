@@ -1,40 +1,40 @@
-package cn.monitor4all.miaoshaservice.service;
+package cn.monitor4all.miaoshaweb.service;
 
-import cn.monitor4all.miaoshadao.dao.Stock;
-import cn.monitor4all.miaoshadao.dao.StockOrder;
-import cn.monitor4all.miaoshadao.dao.User;
-import cn.monitor4all.miaoshadao.mapper.StockOrderMapper;
-import cn.monitor4all.miaoshadao.mapper.UserMapper;
-import cn.monitor4all.miaoshadao.utils.CacheKey;
+import cn.monitor4all.miaoshaweb.dao.Stock;
+import cn.monitor4all.miaoshaweb.dao.StockOrder;
+import cn.monitor4all.miaoshaweb.dao.User;
+import cn.monitor4all.miaoshaweb.mapper.StockOrderMapper;
+import cn.monitor4all.miaoshaweb.mapper.UserMapper;
+import cn.monitor4all.miaoshaweb.utils.CacheKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
     private StockService stockService;
 
-    @Autowired
     private StockOrderMapper orderMapper;
 
-    @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    OrderServiceImpl(StringRedisTemplate stringRedisTemplate,StockService stockService,StockOrderMapper orderMapper,
+                     UserMapper userMapper ){
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.stockService = stockService;
+        this.orderMapper = orderMapper;
+        this.userMapper = userMapper;
+    }
     @Override
     public int createWrongOrder(int sid) {
         //校验库存
